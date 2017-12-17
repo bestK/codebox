@@ -1,0 +1,64 @@
+<html>
+<head>
+  <style>
+    pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+    .string { color: green; }
+    .number { color: darkorange; }
+    .boolean { color: blue; }
+    .null { color: magenta; }
+    .key { color: red; }
+   </style>
+
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+      $(function(){
+          var url ='https://tui.taobao.com/recommend?_ksTS=1513513252403_439&callback=bestK&appid=2375&callback=jsonp&userid=0&sellerid=3245621139&count=15&a=1'
+          var scriptTag=document.createElement("script");
+          scriptTag.setAttribute("src",url);
+          document.body.appendChild(scriptTag); 
+          console.log(scriptTag)
+      })
+      
+      
+      function bestK(data){
+        console.log(data)
+        $('#result').html(syntaxHighlight(data));
+      }
+      
+      
+      function syntaxHighlight(json) {
+        if (typeof json != 'string') {
+            json = JSON.stringify(json, undefined, 2);
+        }
+        json = json.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>');
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+            var cls = 'number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'key';
+                } else {
+                    cls = 'string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'boolean';
+            } else if (/null/.test(match)) {
+                cls = 'null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+      }
+
+  
+  </script>
+</head>
+
+<body>
+
+  <h1>Result:</h1>
+  <pre id="result">
+  </pre>
+
+ 
+ </textarea>
+</body>
+</html>
