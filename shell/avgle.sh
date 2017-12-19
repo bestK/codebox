@@ -1,5 +1,5 @@
 #!/bin/bash
-# m3u8 Ñ°ÕÒ·½·¨ chrome °´ F12 ÔÙ Ctrl +F ÊäÈë video-player_html5_api ¿½±´ source ±êÇ©ÏÂµÄ src ÊôĞÔÖµµ½ä¯ÀÀÆ÷ÖĞ´ò¿ª¼´¿É
+# m3u8 å¯»æ‰¾æ–¹æ³• chrome æŒ‰ F12 å† Ctrl +F è¾“å…¥ video-player_html5_api æ‹·è´ source æ ‡ç­¾ä¸‹çš„ src å±æ€§å€¼åˆ°æµè§ˆå™¨ä¸­æ‰“å¼€å³å¯
 for line in $(cat test.m3u8)
 do 
 	curl -O ${line}
@@ -7,5 +7,5 @@ done
 echo " --------------------------------------------------------------------------100%"
 echo "| Download done and successfully!                                             |"
 echo "| Windows command only  [ copy  /b  E:\temps\*.ts E:\temps\fullVideo.ts  ]    |"
-echo "| Coding By https://github.com/bestK/codebox                                  |"
+echo "| Codeing By https://github.com/bestK/codebox                                  |"
 echo " -----------------------------------------------------------------------------"
